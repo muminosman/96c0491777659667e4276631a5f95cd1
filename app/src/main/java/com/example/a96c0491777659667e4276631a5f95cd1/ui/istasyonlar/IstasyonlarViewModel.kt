@@ -16,6 +16,29 @@ class IstasyonlarViewModel(private val repository: IstasyonlarRepository) : View
     val istasyonlar: LiveData<List<Istasyon>>
         get() = _istasyonlar
 
+    private val _favoriIstasyonlarList = mutableListOf<Istasyon>()
+    val favoriIstasyonlar = MutableLiveData<List<Istasyon>>()
+
+
+    init {
+        // Immediately connect the now empty quoteList
+        // to the MutableLiveData which can be observed
+        favoriIstasyonlar.value = _favoriIstasyonlarList
+    }
+
+    //    fun addFavoriIstasyon(istasyon: Istasyon) = repository.addFavoriIstasyon(istasyon)
+    fun addFavoriIstasyonlar(istasyon: Istasyon) {
+
+        _favoriIstasyonlarList.add(istasyon)
+        // After adding a quote to the "database",
+        // update the value of MutableLiveData
+        // which will notify its active observers
+        this.favoriIstasyonlar.value = _favoriIstasyonlarList
+    }
+
+    fun getFavoriIstasyonlar() = favoriIstasyonlar as LiveData<List<Istasyon>>
+
+
 ///  on the ui thread
 //    suspend fun getIstasyonlar() {
 //        val istasyonlar = repository.getIstasyonlar()
@@ -23,7 +46,7 @@ class IstasyonlarViewModel(private val repository: IstasyonlarRepository) : View
 //    }
 
 
-/// for change the ui thread
+    /// for change the ui thread
     fun getIstasyonlar() {
         job =
             Coroutines.ioThenMain(
@@ -34,7 +57,7 @@ class IstasyonlarViewModel(private val repository: IstasyonlarRepository) : View
 
     override fun onCleared() {
         super.onCleared()
-        if(::job.isInitialized) job.cancel()
+        if (::job.isInitialized) job.cancel()
     }
 
 }

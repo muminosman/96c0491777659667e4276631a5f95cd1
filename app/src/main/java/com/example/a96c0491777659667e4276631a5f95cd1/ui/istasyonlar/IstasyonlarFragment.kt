@@ -70,7 +70,7 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener {
                     .show()
             }
             R.id.ivFavoriIstasyon -> {
-
+                viewModel.addFavoriIstasyonlar(istasyon)
                 Toast.makeText(
                     requireContext(),
                     "ivFavoriIstasyon ${istasyon.name}",
