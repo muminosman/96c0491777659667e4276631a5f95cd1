@@ -9,8 +9,8 @@ import com.example.a96c0491777659667e4276631a5f95cd1.data.model.Istasyon
 import com.example.a96c0491777659667e4276631a5f95cd1.databinding.RecyclerviewIstasyonBinding
 
 class IstasyonlarAdapter(
-    private val Istasyonlar: List<Istasyon>
-//    private val listener: RecyclerViewClickListener
+    private val Istasyonlar: List<Istasyon>,
+    private val listener: RecyclerViewClickListener
 ) : RecyclerView.Adapter<IstasyonlarAdapter.IstasyonlarViewHolder>() {
 
     override fun getItemCount() = Istasyonlar.size
@@ -27,18 +27,18 @@ class IstasyonlarAdapter(
 
     override fun onBindViewHolder(holder: IstasyonlarViewHolder, position: Int) {
         holder.recyclerviewIstasyonBinding.istasyon = Istasyonlar[position]
-//        holder.recyclerviewIstasyonBinding.buttonBook.setOnClickListener {
-//            listener.onRecyclerViewItemClick(
-//                holder.recyclerviewIstasyonBinding.buttonBook,
-//                Istasyonlar[position]
-//            )
-//        }
-//        holder.recyclerviewIstasyonBinding.layoutLike.setOnClickListener {
-//            listener.onRecyclerViewItemClick(
-//                holder.recyclerviewIstasyonBinding.layoutLike,
-//                Istasyonlar[position]
-//            )
-//        }
+        holder.recyclerviewIstasyonBinding.btnTravel.setOnClickListener {
+            listener.onRecyclerViewItemClick(
+                holder.recyclerviewIstasyonBinding.btnTravel,
+                Istasyonlar[position]
+            )
+        }
+        holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setOnClickListener {
+            listener.onRecyclerViewItemClick(
+                holder.recyclerviewIstasyonBinding.ivFavoriIstasyon,
+                Istasyonlar[position]
+            )
+        }
     }
 
 
