@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">96c0491777659667e4276631a5f95cd1</string>
+    <string name="dayaniklilik">Dayanıklılık: 0</string>
+    <string name="hiz">Hız: 0</string>
+    <string name="kapasite">Kapasite: 0</string>
+    <string name="paun_kalmadi">Dağıtılacak Puan kalmadı</string>
+    <string name="ozellik_sifir_olmaz">özelliklerden herhangi birisi sıfır olamaz.</string>
+    <string name="ugs">UGS : {0}</string>
+    <string name="eus">EUS : {0}</string>
+    <string name="ds">DS : {0}</string>
+    <string name="favoriler">Favoriler</string>
+    <string name="devam_et">Devam Et</string>
 </resources>

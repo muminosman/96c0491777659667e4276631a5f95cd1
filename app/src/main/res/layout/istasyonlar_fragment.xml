@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/altin"
+    android:layout_height="match_parent"
+    tools:context=".ui.istasyonlar.IstasyonlarFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/revFavoriIstasyonlar"
+        android:layout_width="match_parent"
+        tools:listitem="@layout/recyclerview_istasyon"
+        android:layout_height="match_parent" />
+
+
+</FrameLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/istasyonlarFragment">
+
+    <fragment
+        android:id="@+id/istasyonlarFragment"
+        android:name="com.example.a96c0491777659667e4276631a5f95cd1.ui.istasyonlar.IstasyonlarFragment"
+        android:label="istasyonlar_fragment"
+        tools:layout="@layout/istasyonlar_fragment" />
+</navigation>

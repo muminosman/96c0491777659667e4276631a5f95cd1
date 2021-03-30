@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    app:contentInsetEnd="0dp"
+    app:contentInsetLeft="0dp"
+    app:contentInsetRight="0dp"
+    app:contentInsetStart="0dp"
+    android:padding="2dp"
+    app:theme="@style/Base.Theme.AppCompat.CompactMenu">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="4.0">
+
+        <ImageView
+            android:id="@+id/iv_tb_home"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="2.0"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_space_ship"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/iv_tb_previews"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="2.0"
+            android:tint="@color/altin"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_favori"
+            android:visibility="visible"
+            tools:ignore="ContentDescription" />
+
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.Toolbar>
