@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/black2"
     android:layout_height="match_parent"
     tools:context=".ui.UzayAraciOlusturmaActivity">
 
@@ -14,6 +13,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="Dağıtılacak Puan:"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/tvToplamPuan"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="packed"
@@ -24,7 +24,10 @@
         android:id="@+id/tvToplamPuan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_tv"
+        android:padding="4dp"
         android:text="15"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -62,9 +65,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
+
         android:ems="10"
         android:hint="Araç Adı"
         android:inputType="textPersonName"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
         app:layout_constraintTop_toBottomOf="@+id/tvPuanKalmadi" />
@@ -76,9 +81,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/dayaniklilik"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/seekBarDayaniklilik"
         app:layout_constraintEnd_toEndOf="@+id/seekBarDayaniklilik"
         app:layout_constraintHorizontal_bias="0.03"
+
         app:layout_constraintStart_toStartOf="@+id/seekBarDayaniklilik"
         app:layout_constraintTop_toBottomOf="@+id/edtName"
         app:layout_constraintVertical_bias="0.0"
@@ -105,8 +112,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/hiz"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/seekBarHiz"
         app:layout_constraintEnd_toEndOf="@+id/seekBarHiz"
+
         app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="@+id/seekBarHiz"
         app:layout_constraintTop_toBottomOf="@+id/seekBarDayaniklilik" />
@@ -132,6 +141,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/kapasite"
+        android:textColor="@color/black"
+
         app:layout_constraintBottom_toTopOf="@+id/seekBarKapasite"
         app:layout_constraintEnd_toEndOf="@+id/seekBarKapasite"
         app:layout_constraintHorizontal_bias="0.03"
@@ -145,6 +156,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:max="15"
+
         android:min="0"
         android:progressTint="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/btnDevamEt"
@@ -158,23 +170,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
+        android:background="@drawable/bg_tv"
         android:padding="16dp"
         android:text="Devam Et"
+        android:textColor="@color/black"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/seekBarKapasite"
         app:layout_constraintStart_toStartOf="@+id/seekBarKapasite"
         app:layout_constraintWidth_percent="0.45" />
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/main_nav" />
 </androidx.constraintlayout.widget.ConstraintLayout>

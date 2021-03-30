@@ -7,9 +7,12 @@ import android.view.View
 import android.widget.SeekBar
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.databinding.adapters.ListenerUtil.getListener
 import com.example.a96c0491777659667e4276631a5f95cd1.data.model.network.IstasyonApi
 import com.example.a96c0491777659667e4276631a5f95cd1.data.repository.IstasyonlarRepository
 import com.example.a96c0491777659667e4276631a5f95cd1.R
+import com.example.a96c0491777659667e4276631a5f95cd1.util.goToActivity
+import com.example.a96c0491777659667e4276631a5f95cd1.util.goToActivityWithIntent
 import kotlinx.android.synthetic.main.activity_uzay_araci_olusturma.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -83,8 +86,6 @@ class UzayAraciOlusturmaActivity : AppCompatActivity()
             if (sum == 15 && (dayaniklilik == 0 || kapasite == 0 || hiz == 0)) {
                 tvPuanKalmadi.text = getString(R.string.ozellik_sifir_olmaz)
                 tvPuanKalmadi.visibility = View.VISIBLE
-            } else {
-                btnDevamEt.isEnabled = true
             }
         }
         tvToplamPuan?.text = "$toplamPuan"
@@ -99,7 +100,7 @@ class UzayAraciOlusturmaActivity : AppCompatActivity()
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btnDevamEt -> {
-//                getListener()?.onSubmitClicked()
+                goToActivity(this, AnaEkeanActivity::class.java)
             }
         }
     }

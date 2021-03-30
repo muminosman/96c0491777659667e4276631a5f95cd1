@@ -27,6 +27,8 @@ class IstasyonlarAdapter(
 
     override fun onBindViewHolder(holder: IstasyonlarViewHolder, position: Int) {
         holder.recyclerviewIstasyonBinding.istasyon = Istasyonlar[position]
+        holder.recyclerviewIstasyonBinding.tvIstasyonOzellikleri.text =
+            "${Istasyonlar[position].stock}/${Istasyonlar[position].capacity}\n ${Istasyonlar[position].need}EUS"
         holder.recyclerviewIstasyonBinding.btnTravel.setOnClickListener {
             listener.onRecyclerViewItemClick(
                 holder.recyclerviewIstasyonBinding.btnTravel,
@@ -34,6 +36,12 @@ class IstasyonlarAdapter(
             )
         }
         holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setOnClickListener {
+            Istasyonlar[position].is_favori = !Istasyonlar[position].is_favori
+            if (Istasyonlar[position].is_favori) {
+                holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setImageResource(R.drawable.ic_favori_istasyon)
+            } else {
+                holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setImageResource(R.drawable.ic_favori)
+            }
             listener.onRecyclerViewItemClick(
                 holder.recyclerviewIstasyonBinding.ivFavoriIstasyon,
                 Istasyonlar[position]

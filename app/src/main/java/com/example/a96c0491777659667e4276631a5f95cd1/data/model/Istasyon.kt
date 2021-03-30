@@ -6,5 +6,7 @@ data class Istasyon(
     val coordinateY: Double,
     val name: String,
     val need: Int,
-    val stock: Int
+    val stock: Int,
+    var is_favori: Boolean = false,
+    var is_traveled: Boolean = true
 )

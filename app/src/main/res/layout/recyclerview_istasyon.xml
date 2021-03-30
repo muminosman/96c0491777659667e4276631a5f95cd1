@@ -12,75 +12,77 @@
             type="com.example.a96c0491777659667e4276631a5f95cd1.data.model.Istasyon" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/bg_tv">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tvIstasyonOzellikleri"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@+id/ivFavoriIstasyon"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.25"
+            tools:text="stock" />
 
-            <TextView
-                android:id="@+id/tvIstasyonOzellikleri"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@{istasyon.name}"
-                app:layout_constraintEnd_toStartOf="@+id/ivFavoriIstasyon"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintWidth_percent="0.25"
-                tools:text="stock" />
-
-
-            <ImageView
-                android:id="@+id/ivFavoriIstasyon"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:layout_marginEnd="16dp"
-                android:layout_weight="2.0"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_favori_istasyon"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@+id/tvIstasyonOzellikleri"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/tvIstasyonOzellikleri"
-                app:layout_constraintTop_toTopOf="@+id/tvIstasyonOzellikleri" />
+        <ImageView
+            android:id="@+id/ivFavoriIstasyon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="2.0"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@{istasyon._favori==true?@drawable/ic_favori_istasyon:@drawable/ic_favori}"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="@+id/tvIstasyonOzellikleri"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/tvIstasyonOzellikleri"
+            app:layout_constraintTop_toTopOf="@+id/tvIstasyonOzellikleri"
+            tools:src="@drawable/ic_favori_istasyon" />
 
 
-            <TextView
-                android:id="@+id/tvIstasyonAdi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="@{istasyon.name}"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="@+id/ivFavoriIstasyon"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toStartOf="@+id/tvIstasyonOzellikleri"
-                app:layout_constraintTop_toBottomOf="@+id/tvIstasyonOzellikleri"
-                tools:text="name" />
+        <TextView
+            android:id="@+id/tvIstasyonAdi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@{istasyon.name}"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/ivFavoriIstasyon"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="@+id/tvIstasyonOzellikleri"
+            app:layout_constraintTop_toBottomOf="@+id/tvIstasyonOzellikleri"
+            tools:text="name" />
 
-            <Button
-                android:id="@+id/btnTravel"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:layout_marginBottom="8dp"
-                android:padding="16dp"
-                android:text="@string/travel"
-                android:textAllCaps="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvIstasyonAdi"
-                app:layout_constraintWidth_percent="0.45" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+        <Button
+            android:id="@+id/btnTravel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bg_tv"
+            android:padding="16dp"
+            android:text="@string/travel"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvIstasyonAdi"
+            app:layout_constraintWidth_percent="0.45"
+            tools:text="@string/travel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
