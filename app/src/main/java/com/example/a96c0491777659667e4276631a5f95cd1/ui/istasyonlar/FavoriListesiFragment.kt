@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -17,22 +16,21 @@ import com.example.a96c0491777659667e4276631a5f95cd1.data.model.Istasyon
 import com.example.a96c0491777659667e4276631a5f95cd1.data.model.IstasyonlarViewModelFactory
 import com.example.a96c0491777659667e4276631a5f95cd1.data.model.network.IstasyonApi
 import com.example.a96c0491777659667e4276631a5f95cd1.data.repository.IstasyonlarRepository
+import kotlinx.android.synthetic.main.favori_listesi_fragment.*
 import kotlinx.android.synthetic.main.istasyonlar_fragment.*
 
-class IstasyonlarFragment : Fragment(), RecyclerViewClickListener {
 
-    //    companion object {
-//        fun newInstance() = IstasyonlarFragment()
-//    }
+
+class FavoriListesiFragment : Fragment(), RecyclerViewClickListener {
+
     private lateinit var factory: IstasyonlarViewModelFactory
-
     private lateinit var viewModel: IstasyonlarViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.istasyonlar_fragment, container, false)
+        return inflater.inflate(R.layout.favori_listesi_fragment, container, false)
     }
 
     @SuppressLint("WrongConstant")
@@ -47,16 +45,16 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener {
         factory = IstasyonlarViewModelFactory(repository)
 
         viewModel = ViewModelProviders.of(this, factory).get(IstasyonlarViewModel::class.java)
-        viewModel.getIstasyonlar()
+        viewModel.getFavoriIstasyonlar()
 
-        viewModel.istasyonlar.observe(viewLifecycleOwner, Observer { istasyonlar ->
-            revIstasyonlar.also {
+        viewModel.getFavoriIstasyonlar().observe(viewLifecycleOwner, Observer { favoriIstasyonlar ->
+            revFavoriIstasyonlar.also {
                 it.layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayout.HORIZONTAL, false)
+                    LinearLayoutManager(requireContext(), LinearLayout.VERTICAL, false)
                 it.setHasFixedSize(true)
                 it.adapter =
-                    IstasyonlarAdapter(
-                        istasyonlar
+                    FavoriIstasyonlarAdapter(
+                        favoriIstasyonlar
                         , this
                     )
             }

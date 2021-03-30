@@ -10,4 +10,5 @@
         android:name="com.example.a96c0491777659667e4276631a5f95cd1.ui.istasyonlar.IstasyonlarFragment"
         android:label="istasyonlar_fragment"
         tools:layout="@layout/istasyonlar_fragment" />
+
 </navigation>

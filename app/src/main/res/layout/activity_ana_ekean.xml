@@ -15,14 +15,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <include
-            android:id="@+id/testSelection"
             layout="@layout/layout_istasyon"
             android:visibility="visible" />
 
         <include
-            android:id="@+id/testTypeSelection"
             layout="@layout/layout_favori_listesi"
-            android:visibility="gone" />
+            android:visibility="visible" />
+
+
     </ViewFlipper>
 
 
@@ -40,15 +40,5 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <fragment
-        android:id="@+id/fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/main_nav" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

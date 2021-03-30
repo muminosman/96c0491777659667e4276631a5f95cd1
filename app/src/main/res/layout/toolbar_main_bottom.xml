@@ -18,17 +18,17 @@
         android:weightSum="4.0">
 
         <ImageView
-            android:id="@+id/iv_tb_home"
+            android:id="@+id/iv_tb_istasyonlar"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
             android:layout_weight="2.0"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_space_ship"
+            android:src="@drawable/ic_space_ship_selected"
             tools:ignore="ContentDescription" />
 
         <ImageView
-            android:id="@+id/iv_tb_previews"
+            android:id="@+id/iv_tb_favorilar"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center"

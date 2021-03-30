@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/favori_nav"
+    app:startDestination="@id/favoriIstasyonlarFragment">
+
+    <fragment
+        android:id="@+id/favoriIstasyonlarFragment"
+        android:name="com.example.a96c0491777659667e4276631a5f95cd1.ui.istasyonlar.FavoriListesiFragment"
+        android:label="favori_listesi_fragment"
+        tools:layout="@layout/favori_listesi_fragment" />
+</navigation>
