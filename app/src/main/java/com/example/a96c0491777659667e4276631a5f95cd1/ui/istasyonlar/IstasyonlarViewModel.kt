@@ -1,5 +1,6 @@
 package com.example.a96c0491777659667e4276631a5f95cd1.ui.istasyonlar
 
+import android.location.Location
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -7,6 +8,7 @@ import com.example.a96c0491777659667e4276631a5f95cd1.util.Coroutines
 import com.example.a96c0491777659667e4276631a5f95cd1.data.model.Istasyon
 import com.example.a96c0491777659667e4276631a5f95cd1.data.repository.IstasyonlarRepository
 import kotlinx.coroutines.Job
+import kotlin.math.abs
 
 class IstasyonlarViewModel(private val repository: IstasyonlarRepository) : ViewModel() {
 
@@ -26,9 +28,45 @@ class IstasyonlarViewModel(private val repository: IstasyonlarRepository) : View
         favoriIstasyonlar.value = _favoriIstasyonlarList
     }
 
+    fun Istasyonlara(istasyon: Istasyon) {
+        for ((index, item) in _istasyonlar?.value?.withIndex()!!) {
+            if (!item.name.equals(istasyon.name)) {
+                if (item.coordinateX >= 0.0 && istasyon.coordinateX >= 0.0) {
+                    item.coordinateX -= istasyon.coordinateX
+                } else {
+                    if (item.coordinateX < 0 && istasyon.coordinateX < 0) {
+                        item.coordinateX += (-1 * istasyon.coordinateX)
+                    } else {
+                        item.coordinateX = abs(item.coordinateX) + abs(istasyon.coordinateX)
+                        if (istasyon.coordinateX > 0) {
+                            item.coordinateX *= -1
+                        }
+
+                    }
+                }
+                if (item.coordinateY >= 0.0 && istasyon.coordinateY >= 0.0) {
+                    item.coordinateY -= istasyon.coordinateY
+                } else {
+                    if (item.coordinateY < 0 && istasyon.coordinateY < 0) {
+                        item.coordinateY += (-1 * istasyon.coordinateY)
+                    } else {
+                        item.coordinateY = abs(item.coordinateY) + abs(istasyon.coordinateY)
+                        if (istasyon.coordinateY > 0) {
+                            item.coordinateY *= -1
+                        }
+
+                    }
+                }
+
+            }
+        }
+        istasyon.coordinateX = 0.0
+        istasyon.coordinateY = 0.0
+
+    }
+
     //    fun addFavoriIstasyon(istasyon: Istasyon) = repository.addFavoriIstasyon(istasyon)
     fun addFavoriIstasyonlar(istasyon: Istasyon) {
-
         _favoriIstasyonlarList.add(istasyon)
         // After adding a quote to the "database",
         // update the value of MutableLiveData

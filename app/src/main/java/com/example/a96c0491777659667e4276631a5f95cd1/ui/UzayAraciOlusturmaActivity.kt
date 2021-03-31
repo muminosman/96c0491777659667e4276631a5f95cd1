@@ -5,17 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.SeekBar
-import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.databinding.adapters.ListenerUtil.getListener
-import com.example.a96c0491777659667e4276631a5f95cd1.data.model.network.IstasyonApi
-import com.example.a96c0491777659667e4276631a5f95cd1.data.repository.IstasyonlarRepository
+import com.example.a96c0491777659667e4276631a5f95cd1.MyApp
 import com.example.a96c0491777659667e4276631a5f95cd1.R
+import com.example.a96c0491777659667e4276631a5f95cd1.data.model.UzayAraci
 import com.example.a96c0491777659667e4276631a5f95cd1.util.goToActivity
-import com.example.a96c0491777659667e4276631a5f95cd1.util.goToActivityWithIntent
 import kotlinx.android.synthetic.main.activity_uzay_araci_olusturma.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 @RequiresApi(Build.VERSION_CODES.M)
@@ -32,21 +27,18 @@ class UzayAraciOlusturmaActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_uzay_araci_olusturma)
 /// for check the api
-        val repository =
-            IstasyonlarRepository(
-                IstasyonApi()
-            )
-        GlobalScope.launch(Dispatchers.Main) {
-            val istasyonlar = repository.getIstasyonlar()
-            Toast.makeText(
-                this@UzayAraciOlusturmaActivity,
-                istasyonlar.toString(),
-                Toast.LENGTH_LONG
-            ).show()
-        }
-
-
-
+//        val repository =
+//            IstasyonlarRepository(
+//                IstasyonApi()
+//            )
+//        GlobalScope.launch(Dispatchers.Main) {
+//            val istasyonlar = repository.getIstasyonlar()
+//            Toast.makeText(
+//                this@UzayAraciOlusturmaActivity,
+//                istasyonlar.toString(),
+//                Toast.LENGTH_LONG
+//            ).show()
+//        }
 
 
         btnDevamEt?.setOnClickListener(this)
@@ -72,6 +64,11 @@ class UzayAraciOlusturmaActivity : AppCompatActivity()
             seekBarHiz?.progress = hiz
             tvPuanKalmadi.text = getString(R.string.paun_kalmadi)
             tvPuanKalmadi.visibility = View.VISIBLE
+            if (dayaniklilik == 0 || kapasite == 0 || hiz == 0) {
+                tvPuanKalmadi.text =
+                    "${tvPuanKalmadi.text} ve  ${getString(R.string.ozellik_sifir_olmaz)}"
+                tvPuanKalmadi.visibility = View.VISIBLE
+            }
         } else {
             dayaniklilik = seekBarDayaniklilik?.progress!!
             kapasite = seekBarKapasite?.progress!!
@@ -97,10 +94,26 @@ class UzayAraciOlusturmaActivity : AppCompatActivity()
     override fun onStopTrackingTouch(seekBar: SeekBar?) {
     }
 
+    fun aracOlustur() {
+        MyApp.setMyUzayAraci(UzayAraci(edtAracAdi.text.toString(), hiz, kapasite, dayaniklilik))
+        goToActivity(this, AnaEkeanActivity::class.java)
+    }
+
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.btnDevamEt -> {
-                goToActivity(this, AnaEkeanActivity::class.java)
+                tvPuanKalmadi.visibility = View.INVISIBLE
+                if (edtAracAdi.text.isEmpty()) {
+                    edtAracAdi.error = getString(R.string.arac_adi_bos_olmaz)
+                } else {
+                    if (toplamPuan > 0) {
+                        tvPuanKalmadi.text = getString(R.string.paun_kaldi)
+                        tvPuanKalmadi.visibility = View.VISIBLE
+                    } else {
+                        aracOlustur()
+                    }
+                }
+
             }
         }
     }

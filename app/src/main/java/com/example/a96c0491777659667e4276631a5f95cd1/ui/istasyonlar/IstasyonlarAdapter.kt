@@ -28,7 +28,7 @@ class IstasyonlarAdapter(
     override fun onBindViewHolder(holder: IstasyonlarViewHolder, position: Int) {
         holder.recyclerviewIstasyonBinding.istasyon = Istasyonlar[position]
         holder.recyclerviewIstasyonBinding.tvIstasyonOzellikleri.text =
-            "${Istasyonlar[position].stock}/${Istasyonlar[position].capacity}\n ${Istasyonlar[position].need}EUS"
+            "${Istasyonlar[position].capacity}/${Istasyonlar[position].need}\n ${Istasyonlar[position].need}EUS"
         holder.recyclerviewIstasyonBinding.btnTravel.setOnClickListener {
             listener.onRecyclerViewItemClick(
                 holder.recyclerviewIstasyonBinding.btnTravel,

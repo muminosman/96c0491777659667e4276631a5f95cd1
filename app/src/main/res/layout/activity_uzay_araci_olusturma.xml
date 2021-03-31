@@ -48,18 +48,20 @@
 
     <TextView
         android:id="@+id/tvPuanKalmadi"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="@string/paun_kalmadi"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/pink"
         android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/seekBarKapasite"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        app:layout_constraintStart_toStartOf="@+id/tvKapasite"
+        app:layout_constraintTop_toBottomOf="@+id/seekBarKapasite" />
 
 
     <EditText
-        android:id="@+id/edtName"
+        android:id="@+id/edtAracAdi"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -73,7 +75,7 @@
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="@+id/view"
-        app:layout_constraintTop_toBottomOf="@+id/tvPuanKalmadi" />
+        app:layout_constraintTop_toBottomOf="@+id/view" />
 
 
     <TextView
@@ -88,7 +90,7 @@
         app:layout_constraintHorizontal_bias="0.03"
 
         app:layout_constraintStart_toStartOf="@+id/seekBarDayaniklilik"
-        app:layout_constraintTop_toBottomOf="@+id/edtName"
+        app:layout_constraintTop_toBottomOf="@+id/edtAracAdi"
         app:layout_constraintVertical_bias="0.0"
         app:layout_constraintVertical_chainStyle="packed" />
 
@@ -102,9 +104,9 @@
         android:min="0"
         android:progressTint="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/tvHiz"
-        app:layout_constraintEnd_toEndOf="@+id/edtName"
+        app:layout_constraintEnd_toEndOf="@+id/edtAracAdi"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/edtName"
+        app:layout_constraintStart_toStartOf="@+id/edtAracAdi"
         app:layout_constraintTop_toBottomOf="@+id/tvDayaniklilik" />
 
     <TextView
@@ -131,9 +133,9 @@
         android:min="0"
         android:progressTint="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/tvKapasite"
-        app:layout_constraintEnd_toEndOf="@+id/edtName"
+        app:layout_constraintEnd_toEndOf="@+id/edtAracAdi"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/edtName"
+        app:layout_constraintStart_toStartOf="@+id/edtAracAdi"
         app:layout_constraintTop_toBottomOf="@+id/tvHiz" />
 
     <TextView
@@ -157,13 +159,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:max="15"
-
         android:min="0"
         android:progressTint="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/btnDevamEt"
-        app:layout_constraintEnd_toEndOf="@+id/edtName"
+        app:layout_constraintEnd_toEndOf="@+id/edtAracAdi"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="@+id/edtName"
+        app:layout_constraintStart_toStartOf="@+id/edtAracAdi"
         app:layout_constraintTop_toBottomOf="@+id/tvKapasite" />
 
     <Button
