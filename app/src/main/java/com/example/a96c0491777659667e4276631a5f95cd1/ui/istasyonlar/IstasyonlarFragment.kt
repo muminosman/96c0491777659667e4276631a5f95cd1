@@ -117,21 +117,14 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener {
             }
             R.id.ivFavoriIstasyon -> {
                 viewModel.addFavoriIstasyonlar(istasyon)
+//                viewModel.getFavoriIstasyonlar()
 
 
-                val loc1 = Location("")
-                loc1.setLatitude(0.0)
-                loc1.setLongitude(0.0)
 
-                val loc2 = Location("")
-                loc2.setLatitude(-2.0)
-                loc2.setLongitude(0.0)
-
-                val distanceInMeters: Float = loc1.distanceTo(loc2)
 
                 Toast.makeText(
                     requireContext(),
-                    "ivFavoriIstasyon ${distanceInMeters}",
+                    "ivFavoriIstasyon ${istasyon}",
                     Toast.LENGTH_LONG
                 ).show()
 

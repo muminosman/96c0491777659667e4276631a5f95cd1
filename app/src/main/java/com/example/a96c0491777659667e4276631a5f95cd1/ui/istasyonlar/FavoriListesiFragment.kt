@@ -45,16 +45,16 @@ class FavoriListesiFragment : Fragment(), RecyclerViewClickListener {
         factory = IstasyonlarViewModelFactory(repository)
 
         viewModel = ViewModelProviders.of(this, factory).get(IstasyonlarViewModel::class.java)
-        viewModel.getFavoriIstasyonlar()
+//        viewModel.getFavoriIstasyonlar()
 
-        viewModel.getFavoriIstasyonlar().observe(viewLifecycleOwner, Observer { favoriIstasyonlar ->
+        viewModel.istasyonlar.observe(viewLifecycleOwner, Observer { favoriIstasyonlar ->
             revFavoriIstasyonlar.also {
                 it.layoutManager =
                     LinearLayoutManager(requireContext(), LinearLayout.VERTICAL, false)
                 it.setHasFixedSize(true)
                 it.adapter =
                     FavoriIstasyonlarAdapter(
-                        favoriIstasyonlar
+                        favoriIstasyonlar.filter {  inner -> inner.is_favori}
                         , this
                     )
             }
