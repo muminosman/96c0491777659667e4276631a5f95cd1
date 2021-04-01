@@ -15,11 +15,11 @@ class IstasyonlarViewModel(private val repository: IstasyonlarRepository) : View
     private lateinit var job: Job
 
     private val _istasyonlar = MutableLiveData<List<Istasyon>>()
+    private val _favoriIstasyonlarList = mutableListOf<Istasyon>()
+
+    val favoriIstasyonlar = MutableLiveData<List<Istasyon>>()
     val istasyonlar: LiveData<List<Istasyon>>
         get() = _istasyonlar
-
-    private val _favoriIstasyonlarList = mutableListOf<Istasyon>()
-    val favoriIstasyonlar = MutableLiveData<List<Istasyon>>()
 
 
     init {
@@ -67,7 +67,13 @@ class IstasyonlarViewModel(private val repository: IstasyonlarRepository) : View
 
     //    fun addFavoriIstasyon(istasyon: Istasyon) = repository.addFavoriIstasyon(istasyon)
     fun addFavoriIstasyonlar(istasyon: Istasyon) {
-        istasyon.is_favori=true
+        for ((index, item) in _istasyonlar?.value?.withIndex()!!) {
+            if (item.name.equals(istasyon.name)) {
+                item.is_favori = true
+            }
+        }
+
+//        get() = _istasyonlar
 //        _favoriIstasyonlarList.add(istasyon)
 //        // After adding a quote to the "database",
 //        // update the value of MutableLiveData
@@ -93,6 +99,7 @@ class IstasyonlarViewModel(private val repository: IstasyonlarRepository) : View
                 { _istasyonlar.value = it }
             )
     }
+
     fun getFavoriIstasyonlar() {
 //        job =
 //            Coroutines.ioThenMain(

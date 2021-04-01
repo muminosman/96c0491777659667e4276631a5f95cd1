@@ -7,11 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.a96c0491777659667e4276631a5f95cd1.R
 import com.example.a96c0491777659667e4276631a5f95cd1.data.model.Istasyon
 import com.example.a96c0491777659667e4276631a5f95cd1.databinding.RecyclerviewFavoriIstasyonBinding
-import com.example.a96c0491777659667e4276631a5f95cd1.databinding.RecyclerviewIstasyonBinding
 
 class FavoriIstasyonlarAdapter(
-    private val favoriIstasyonlar: List<Istasyon>,
-    private val listener: RecyclerViewClickListener
+    private val favoriIstasyonlar: List<Istasyon>
 ) : RecyclerView.Adapter<FavoriIstasyonlarAdapter.FavoriIstasyonlarViewHolder>() {
 
 

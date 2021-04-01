@@ -70,6 +70,7 @@
         android:background="@drawable/bg_tv"
         android:ems="10"
         android:hint="Araç Adı"
+        android:text="ewew"
         android:padding="10dp"
         android:inputType="textPersonName"
         android:textColor="@color/black"
@@ -102,6 +103,7 @@
         android:layout_marginTop="8dp"
         android:max="15"
         android:min="0"
+        android:progress="5"
         android:progressTint="@color/colorPrimary"
         app:layout_constraintBottom_toTopOf="@+id/tvHiz"
         app:layout_constraintEnd_toEndOf="@+id/edtAracAdi"
@@ -132,6 +134,8 @@
         android:max="15"
         android:min="0"
         android:progressTint="@color/colorPrimary"
+        android:progress="5"
+
         app:layout_constraintBottom_toTopOf="@+id/tvKapasite"
         app:layout_constraintEnd_toEndOf="@+id/edtAracAdi"
         app:layout_constraintHorizontal_bias="0.5"
@@ -164,6 +168,8 @@
         app:layout_constraintBottom_toTopOf="@+id/btnDevamEt"
         app:layout_constraintEnd_toEndOf="@+id/edtAracAdi"
         app:layout_constraintHorizontal_bias="0.5"
+        android:progress="5"
+
         app:layout_constraintStart_toStartOf="@+id/edtAracAdi"
         app:layout_constraintTop_toBottomOf="@+id/tvKapasite" />
 

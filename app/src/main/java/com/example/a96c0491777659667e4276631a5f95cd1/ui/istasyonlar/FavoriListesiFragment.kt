@@ -17,8 +17,6 @@ import com.example.a96c0491777659667e4276631a5f95cd1.data.model.IstasyonlarViewM
 import com.example.a96c0491777659667e4276631a5f95cd1.data.model.network.IstasyonApi
 import com.example.a96c0491777659667e4276631a5f95cd1.data.repository.IstasyonlarRepository
 import kotlinx.android.synthetic.main.favori_listesi_fragment.*
-import kotlinx.android.synthetic.main.istasyonlar_fragment.*
-
 
 
 class FavoriListesiFragment : Fragment(), RecyclerViewClickListener {
@@ -47,18 +45,18 @@ class FavoriListesiFragment : Fragment(), RecyclerViewClickListener {
         viewModel = ViewModelProviders.of(this, factory).get(IstasyonlarViewModel::class.java)
 //        viewModel.getFavoriIstasyonlar()
 
-        viewModel.istasyonlar.observe(viewLifecycleOwner, Observer { favoriIstasyonlar ->
-            revFavoriIstasyonlar.also {
-                it.layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayout.VERTICAL, false)
-                it.setHasFixedSize(true)
-                it.adapter =
-                    FavoriIstasyonlarAdapter(
-                        favoriIstasyonlar.filter {  inner -> inner.is_favori}
-                        , this
-                    )
-            }
-        })
+//        viewModel.istasyonlar.observe(viewLifecycleOwner, Observer { favoriIstasyonlar ->
+//            revFavoriIstasyonlar.also {
+//                it.layoutManager =
+//                    LinearLayoutManager(requireContext(), LinearLayout.VERTICAL, false)
+//                it.setHasFixedSize(true)
+//                it.adapter =
+//                    FavoriIstasyonlarAdapter(
+//                        favoriIstasyonlar.filter {  inner -> inner.is_favori}
+//                        , this
+//                    )
+//            }
+//        })
     }
 
     override fun onRecyclerViewItemClick(view: View, istasyon: Istasyon) {
@@ -68,7 +66,7 @@ class FavoriListesiFragment : Fragment(), RecyclerViewClickListener {
                     .show()
             }
             R.id.ivFavoriIstasyon -> {
-                viewModel.addFavoriIstasyonlar(istasyon)
+//                viewModel.addFavoriIstasyonlar(istasyon)
                 Toast.makeText(
                     requireContext(),
                     "ivFavoriIstasyon ${istasyon.name}",

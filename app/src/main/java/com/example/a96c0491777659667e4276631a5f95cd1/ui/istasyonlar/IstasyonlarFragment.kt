@@ -1,13 +1,11 @@
 package com.example.a96c0491777659667e4276631a5f95cd1.ui.istasyonlar
 
 import android.annotation.SuppressLint
-import android.location.Location
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -20,9 +18,13 @@ import com.example.a96c0491777659667e4276631a5f95cd1.data.model.IstasyonlarViewM
 import com.example.a96c0491777659667e4276631a5f95cd1.data.model.UzayAraci
 import com.example.a96c0491777659667e4276631a5f95cd1.data.model.network.IstasyonApi
 import com.example.a96c0491777659667e4276631a5f95cd1.data.repository.IstasyonlarRepository
+import kotlinx.android.synthetic.main.favori_listesi_fragment.*
 import kotlinx.android.synthetic.main.istasyonlar_fragment.*
+import kotlinx.android.synthetic.main.layout_istasyon.*
+import kotlinx.android.synthetic.main.layout_istasyon.tvEUS
+import kotlinx.android.synthetic.main.toolbar_main_bottom.*
 
-class IstasyonlarFragment : Fragment(), RecyclerViewClickListener {
+class IstasyonlarFragment : Fragment(), RecyclerViewClickListener, View.OnClickListener {
     private var myUzayAraci: UzayAraci
 
     init {
@@ -46,6 +48,8 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener {
     @SuppressLint("WrongConstant")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        iv_tb_istasyonlar.setOnClickListener(this)
+        iv_tb_favorilar.setOnClickListener(this)
         val api =
             IstasyonApi()
         val repository =
@@ -66,6 +70,15 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener {
                     IstasyonlarAdapter(
                         istasyonlar
                         , this
+                    )
+            }
+            revFavoriIstasyonlar.also {
+                it.layoutManager =
+                    LinearLayoutManager(requireContext(), LinearLayout.VERTICAL, false)
+                it.adapter =
+                    FavoriIstasyonlarAdapter(
+                        istasyonlar.filter { item -> item.is_favori }
+
                     )
             }
         })
@@ -98,22 +111,6 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener {
                 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             }
             R.id.ivFavoriIstasyon -> {
                 viewModel.addFavoriIstasyonlar(istasyon)
@@ -121,19 +118,41 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener {
 
 
 
-
-                Toast.makeText(
-                    requireContext(),
-                    "ivFavoriIstasyon ${istasyon}",
-                    Toast.LENGTH_LONG
-                ).show()
-
             }
         }
     }
 
     private fun istasyonaSeyahat(istasyon: Istasyon) {
         myUzayAraci.istasyonaSeyahat(istasyon)
+    }
+
+    override fun onClick(v: View?) {
+        when (v?.id) {
+            R.id.iv_tb_istasyonlar -> {
+                iv_tb_favorilar.setImageResource(R.drawable.ic_favori)
+                iv_tb_istasyonlar.setImageResource(R.drawable.ic_space_ship_selected)
+                viewFlipper.displayedChild = 0
+                revIstasyonlar.adapter?.notifyDataSetChanged()
+            }
+            R.id.iv_tb_favorilar -> {
+                iv_tb_favorilar.setImageResource(R.drawable.ic_favori_istasyon)
+                iv_tb_istasyonlar.setImageResource(R.drawable.ic_space_ship)
+                viewModel.istasyonlar.observe(viewLifecycleOwner, Observer { istasyonlar ->
+                    revFavoriIstasyonlar.adapter.apply {
+                        FavoriIstasyonlarAdapter(
+                            istasyonlar.filter { item -> item.is_favori }
+                        )
+                    }
+                    Toast.makeText(
+                        requireContext(),
+                        istasyonlar.filter { iss -> iss.is_favori }.toString(),
+                        Toast.LENGTH_LONG
+                    ).show()
+                })
+                revFavoriIstasyonlar.adapter?.notifyDataSetChanged()
+                viewFlipper.displayedChild = 1
+            }
+        }
     }
     //    override fun onActivityCreated(savedInstanceState: Bundle?) {
 //        super.onActivityCreated(savedInstanceState)

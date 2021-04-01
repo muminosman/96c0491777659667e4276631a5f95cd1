@@ -8,160 +8,43 @@
     tools:context=".ui.istasyonlar.IstasyonlarFragment">
 
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/revIstasyonlar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="200dp"
-            android:layout_marginTop="24dp"
-            android:orientation="horizontal"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.4"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtName"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:listitem="@layout/recyclerview_istasyon" />
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            layout="@layout/layout_istasyon"
+            android:visibility="visible" />
+
+        <include
+            layout="@layout/favori_listesi_fragment"
+            android:visibility="visible" />
 
 
-        <TextView
-            android:id="@+id/tvUGS"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/ugs"
-            app:layout_constraintBottom_toBottomOf="@+id/tvEUS"
-            app:layout_constraintEnd_toStartOf="@+id/tvEUS"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintTop_toTopOf="@+id/tvEUS"
-            app:layout_constraintWidth_percent="0.25" />
+    </ViewFlipper>
 
-
-        <TextView
-            android:id="@+id/tvEUS"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/eus"
-            app:layout_constraintEnd_toStartOf="@+id/tvDS"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/tvUGS"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintWidth_percent="0.25" />
-
-        <TextView
-            android:id="@+id/tvDS"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/ds"
-            app:layout_constraintBottom_toBottomOf="@+id/tvEUS"
-            app:layout_constraintEnd_toEndOf="@+id/view"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toEndOf="@+id/tvEUS"
-            app:layout_constraintTop_toTopOf="@+id/tvEUS"
-            app:layout_constraintWidth_percent="0.25" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="0dp"
-            android:layout_height="2dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:background="@color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvEUS" />
-
-        <TextView
-            android:id="@+id/tvPuanKalmadi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/paun_kalmadi"
-            android:textColor="@color/colorAccent"
-            android:visibility="invisible"
-            app:layout_constraintHorizontal_chainStyle="packed"
-            app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintTop_toBottomOf="@+id/view" />
-
-        <TextView
-            android:id="@+id/tvUzayAracinadi"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="WhartonX"
-            app:layout_constraintEnd_toStartOf="@+id/tvUzayAracininHasar"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintTop_toBottomOf="@+id/tvPuanKalmadi"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintWidth_percent="0.25" />
-
-        <TextView
-            android:id="@+id/tvUzayAracininHasar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_tv"
-            android:gravity="center"
-            android:text="100"
-            app:layout_constraintBottom_toBottomOf="@+id/tvUzayAracinadi"
-            app:layout_constraintEnd_toStartOf="@+id/tvUzayAracininSeyahatler"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tvUzayAracinadi"
-            app:layout_constraintTop_toTopOf="@+id/tvUzayAracinadi"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintWidth_percent="0.25" />
-
-        <TextView
-            android:id="@+id/tvUzayAracininSeyahatler"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_tv"
-            android:gravity="center"
-            android:text="49s"
-            app:layout_constraintBottom_toBottomOf="@+id/tvUzayAracinadi"
-            app:layout_constraintEnd_toEndOf="@+id/view"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/tvUzayAracininHasar"
-            app:layout_constraintTop_toTopOf="@+id/tvUzayAracinadi"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintWidth_percent="0.25" />
-
-
-        <EditText
-            android:id="@+id/edtName"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_tv"
-            android:drawableStart="@drawable/ic_search"
-            android:ems="10"
-            android:hint="ara"
-            android:inputType="textPersonName"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="@+id/view"
-            app:layout_constraintStart_toStartOf="@+id/view"
-            app:layout_constraintTop_toBottomOf="@+id/tvUzayAracinadi" />
-
-        <TextView
-            android:id="@+id/tvSimdilikIstasyon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Dünya"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/revIstasyonlar" />
-
-
+    <include
+        android:id="@+id/lay_bottom_toolbar"
+        layout="@layout/toolbar_main_bottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </FrameLayout>
