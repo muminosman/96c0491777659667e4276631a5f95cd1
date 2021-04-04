@@ -33,32 +33,10 @@ class FavoriIstasyonlarAdapter(
 
     override fun onBindViewHolder(holder: FavoriIstasyonlarViewHolder, position: Int) {
         holder.recyclerviewIstasyonBinding.istasyon = listData[position]
-//            holder.recyclerviewIstasyonBinding.tvIstasyonOzellikleri.text =
-//                "${Istasyonlar[position].stock}/${Istasyonlar[position].capacity}\n ${Istasyonlar[position].need}EUS"
         holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setOnClickListener {
             favoriIstasyonlar[position].is_favori = false
-//            holder.itemView.visibility = View.GONE
             deleteItem(position)
-//            listData.removeAt(position)
-//            notifyDataSetChanged()
-//                if (istasyonlar[position].is_favori) {
-//                    holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setImageResource(R.drawable.ic_favori_istasyon)
-//                } else {
-//                    holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setImageResource(R.drawable.ic_favori)
-//                }
         }
-//            holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setOnClickListener {
-//                Istasyonlar[position].is_favori = !Istasyonlar[position].is_favori
-//                if (Istasyonlar[position].is_favori) {
-//                    holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setImageResource(R.drawable.ic_favori_istasyon)
-//                } else {
-//                    holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setImageResource(R.drawable.ic_favori)
-//                }
-//                listener.onRecyclerViewItemClick(
-//                    holder.recyclerviewIstasyonBinding.ivFavoriIstasyon,
-//                    Istasyonlar[position]
-//                )
-//            }
     }
 
 
