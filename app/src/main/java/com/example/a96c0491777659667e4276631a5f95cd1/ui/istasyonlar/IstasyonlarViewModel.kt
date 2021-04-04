@@ -65,31 +65,19 @@ class IstasyonlarViewModel(private val repository: IstasyonlarRepository) : View
 
     }
 
-    //    fun addFavoriIstasyon(istasyon: Istasyon) = repository.addFavoriIstasyon(istasyon)
     fun addFavoriIstasyonlar(istasyon: Istasyon) {
         for ((index, item) in _istasyonlar?.value?.withIndex()!!) {
             if (item.name.equals(istasyon.name)) {
                 item.is_favori = true
             }
         }
-
-//        get() = _istasyonlar
-//        _favoriIstasyonlarList.add(istasyon)
-//        // After adding a quote to the "database",
-//        // update the value of MutableLiveData
-//        // which will notify its active observers
-//        this.favoriIstasyonlar.value = _favoriIstasyonlarList
     }
-
-//    fun getFavoriIstasyonlar() = favoriIstasyonlar as LiveData<List<Istasyon>>
-
 
 ///  on the ui thread
 //    suspend fun getIstasyonlar() {
 //        val istasyonlar = repository.getIstasyonlar()
 //        _istasyonlar.value = istasyonlar
 //    }
-
 
     /// for change the ui thread
     fun getIstasyonlar() {
@@ -98,14 +86,6 @@ class IstasyonlarViewModel(private val repository: IstasyonlarRepository) : View
                 { repository.getIstasyonlar() },
                 { _istasyonlar.value = it }
             )
-    }
-
-    fun getFavoriIstasyonlar() {
-//        job =
-//            Coroutines.ioThenMain(
-//                { repository.getIstasyonlar().filter {  inner -> inner.is_favori} },
-//                { _istasyonlar.value = it }
-//            )
     }
 
     override fun onCleared() {

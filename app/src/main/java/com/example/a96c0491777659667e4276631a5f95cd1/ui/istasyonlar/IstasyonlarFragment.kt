@@ -31,9 +31,6 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener, View.OnClickL
         myUzayAraci = MyApp.getMyUzayAraci()!!
     }
 
-    //    companion object {
-//        fun newInstance() = IstasyonlarFragment()
-//    }
     private lateinit var factory: IstasyonlarViewModelFactory
 
     private lateinit var viewModel: IstasyonlarViewModel
@@ -109,8 +106,6 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener, View.OnClickL
 
                 viewModel.addFavoriIstasyonlar(istasyon)
                 revFavoriIstasyonlar.adapter?.notifyDataSetChanged()
-//                viewModel.getFavoriIstasyonlar()
-
 
             }
         }
@@ -142,23 +137,10 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener, View.OnClickL
                             xx.getIstasyonlar()
                                 .filter { item -> item.is_favori })
                 }
-//                viewModel.istasyonlar.observe(viewLifecycleOwner, Observer { istasyonlar ->
-//
-//                    Toast.makeText(
-//                        requireContext(),
-//                        istasyonlar.filter { iss -> iss.is_favori }.toString(),
-//                        Toast.LENGTH_LONG
-//                    ).show()
-//                })
+
                 revFavoriIstasyonlar.adapter?.notifyDataSetChanged()
                 viewFlipper.displayedChild = 1
             }
         }
     }
-    //    override fun onActivityCreated(savedInstanceState: Bundle?) {
-//        super.onActivityCreated(savedInstanceState)
-//        viewModel = ViewModelProvider(this).get(IstasyonlarViewModel::class.java)
-//        // TODO: Use the ViewModel
-//    }
-
 }

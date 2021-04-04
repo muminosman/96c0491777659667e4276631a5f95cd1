@@ -13,8 +13,6 @@ class AnaEkeanActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ana_ekean)
-//        iv_tb_istasyonlar.setOnClickListener(this)
-//        iv_tb_favorilar.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {

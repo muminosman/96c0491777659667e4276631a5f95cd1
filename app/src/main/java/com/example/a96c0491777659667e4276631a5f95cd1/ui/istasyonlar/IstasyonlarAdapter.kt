@@ -14,7 +14,7 @@ class IstasyonlarAdapter(
 ) : RecyclerView.Adapter<IstasyonlarAdapter.IstasyonlarViewHolder>() {
 
     override fun getItemCount() = istasyonlar.size
-     fun getIstasyonlar() = istasyonlar
+    fun getIstasyonlar() = istasyonlar
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         IstasyonlarViewHolder(

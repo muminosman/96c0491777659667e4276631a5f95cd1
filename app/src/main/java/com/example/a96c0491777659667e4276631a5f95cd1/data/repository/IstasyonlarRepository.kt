@@ -8,8 +8,4 @@ class IstasyonlarRepository(
 ) : SafeApiRequest() {
 
     suspend fun getIstasyonlar() = apiRequest { api.getIstasyonlar() }
-    fun addFavoriIstasyon(istasyon: Istasyon) {
-
-    }
-
 }
