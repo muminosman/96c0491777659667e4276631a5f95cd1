@@ -26,33 +26,12 @@ class UzayAraciOlusturmaActivity : AppCompatActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_uzay_araci_olusturma)
-/// for check the api
-//        val repository =
-//            IstasyonlarRepository(
-//                IstasyonApi()
-//            )
-//        GlobalScope.launch(Dispatchers.Main) {
-//            val istasyonlar = repository.getIstasyonlar()
-//            Toast.makeText(
-//                this@UzayAraciOlusturmaActivity,
-//                istasyonlar.toString(),
-//                Toast.LENGTH_LONG
-//            ).show()
-//        }
-
 
         btnDevamEt?.setOnClickListener(this)
         seekBarDayaniklilik?.setOnSeekBarChangeListener(this)
         seekBarKapasite?.setOnSeekBarChangeListener(this)
         seekBarHiz?.setOnSeekBarChangeListener(this)
-        setupClickListeners()
     }
-
-    // Setup the button in our fragment to call getUpdatedText method in viewModel
-    private fun setupClickListeners() {
-//        binding.fragmentButton.setOnClickListener { viewModel.getUpdatedText() }
-    }
-
 
     override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
         val sum =
