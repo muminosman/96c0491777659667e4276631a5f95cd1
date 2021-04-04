@@ -9,11 +9,12 @@ import com.example.a96c0491777659667e4276631a5f95cd1.data.model.Istasyon
 import com.example.a96c0491777659667e4276631a5f95cd1.databinding.RecyclerviewIstasyonBinding
 
 class IstasyonlarAdapter(
-    private val Istasyonlar: List<Istasyon>,
+    private val istasyonlar: List<Istasyon>,
     private val listener: RecyclerViewClickListener
 ) : RecyclerView.Adapter<IstasyonlarAdapter.IstasyonlarViewHolder>() {
 
-    override fun getItemCount() = Istasyonlar.size
+    override fun getItemCount() = istasyonlar.size
+     fun getIstasyonlar() = istasyonlar
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         IstasyonlarViewHolder(
@@ -26,26 +27,26 @@ class IstasyonlarAdapter(
         )
 
     override fun onBindViewHolder(holder: IstasyonlarViewHolder, position: Int) {
-        holder.recyclerviewIstasyonBinding.istasyon = Istasyonlar[position]
+        holder.recyclerviewIstasyonBinding.istasyon = istasyonlar[position]
         holder.recyclerviewIstasyonBinding.tvIstasyonOzellikleri.text =
-            "${Istasyonlar[position].capacity}/${Istasyonlar[position].need}\n ${Istasyonlar[position].need}EUS"
+            "${istasyonlar[position].capacity}/${istasyonlar[position].need}\n ${istasyonlar[position].need}EUS"
         holder.recyclerviewIstasyonBinding.btnTravel.setOnClickListener {
             listener.onRecyclerViewItemClick(
                 holder.recyclerviewIstasyonBinding.btnTravel,
-                Istasyonlar[position]
+                istasyonlar[position]
             )
         }
         holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setOnClickListener {
-            Istasyonlar[position].is_favori = !Istasyonlar[position].is_favori
-            if (Istasyonlar[position].is_favori) {
+            istasyonlar[position].is_favori = !istasyonlar[position].is_favori
+            if (istasyonlar[position].is_favori) {
                 holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setImageResource(R.drawable.ic_favori_istasyon)
             } else {
                 holder.recyclerviewIstasyonBinding.ivFavoriIstasyon.setImageResource(R.drawable.ic_favori)
             }
-            listener.onRecyclerViewItemClick(
-                holder.recyclerviewIstasyonBinding.ivFavoriIstasyon,
-                Istasyonlar[position]
-            )
+//            listener.onRecyclerViewItemClick(
+//                holder.recyclerviewIstasyonBinding.ivFavoriIstasyon,
+//                istasyonlar[position]
+//            )
         }
     }
 

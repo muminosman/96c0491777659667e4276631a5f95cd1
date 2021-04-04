@@ -72,15 +72,7 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener, View.OnClickL
                         , this
                     )
             }
-            revFavoriIstasyonlar.also {
-                it.layoutManager =
-                    LinearLayoutManager(requireContext(), LinearLayout.VERTICAL, false)
-                it.adapter =
-                    FavoriIstasyonlarAdapter(
-                        istasyonlar.filter { item -> item.is_favori }
 
-                    )
-            }
         })
 
         tvUzayAracinadi.text = myUzayAraci.getAracAdi()
@@ -101,7 +93,7 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener, View.OnClickL
                 istasyonaSeyahat(istasyon)
 
                 viewModel.Istasyonlara(istasyon)
-
+                revIstasyonlar.adapter?.notifyDataSetChanged()
                 viewModel.istasyonlar.observe(viewLifecycleOwner, Observer { istasyonlar ->
                     Toast.makeText(
                         requireContext(),
@@ -113,9 +105,11 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener, View.OnClickL
 
             }
             R.id.ivFavoriIstasyon -> {
-                viewModel.addFavoriIstasyonlar(istasyon)
-//                viewModel.getFavoriIstasyonlar()
 
+
+                viewModel.addFavoriIstasyonlar(istasyon)
+                revFavoriIstasyonlar.adapter?.notifyDataSetChanged()
+//                viewModel.getFavoriIstasyonlar()
 
 
             }
@@ -126,6 +120,7 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener, View.OnClickL
         myUzayAraci.istasyonaSeyahat(istasyon)
     }
 
+    @SuppressLint("WrongConstant")
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.iv_tb_istasyonlar -> {
@@ -137,18 +132,24 @@ class IstasyonlarFragment : Fragment(), RecyclerViewClickListener, View.OnClickL
             R.id.iv_tb_favorilar -> {
                 iv_tb_favorilar.setImageResource(R.drawable.ic_favori_istasyon)
                 iv_tb_istasyonlar.setImageResource(R.drawable.ic_space_ship)
-                viewModel.istasyonlar.observe(viewLifecycleOwner, Observer { istasyonlar ->
-                    revFavoriIstasyonlar.adapter.apply {
+                var xx = revIstasyonlar.adapter as IstasyonlarAdapter
+
+                revFavoriIstasyonlar.also {
+                    it.layoutManager =
+                        LinearLayoutManager(requireContext(), LinearLayout.VERTICAL, false)
+                    it.adapter =
                         FavoriIstasyonlarAdapter(
-                            istasyonlar.filter { item -> item.is_favori }
-                        )
-                    }
-                    Toast.makeText(
-                        requireContext(),
-                        istasyonlar.filter { iss -> iss.is_favori }.toString(),
-                        Toast.LENGTH_LONG
-                    ).show()
-                })
+                            xx.getIstasyonlar()
+                                .filter { item -> item.is_favori })
+                }
+//                viewModel.istasyonlar.observe(viewLifecycleOwner, Observer { istasyonlar ->
+//
+//                    Toast.makeText(
+//                        requireContext(),
+//                        istasyonlar.filter { iss -> iss.is_favori }.toString(),
+//                        Toast.LENGTH_LONG
+//                    ).show()
+//                })
                 revFavoriIstasyonlar.adapter?.notifyDataSetChanged()
                 viewFlipper.displayedChild = 1
             }
