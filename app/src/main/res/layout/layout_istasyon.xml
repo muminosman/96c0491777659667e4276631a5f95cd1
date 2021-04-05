@@ -10,6 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/revIstasyonlar"
             android:layout_width="match_parent"
@@ -17,14 +19,24 @@
             android:minHeight="200dp"
             android:layout_marginTop="24dp"
             android:orientation="horizontal"
+            android:visibility="invisible"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edtName"
+            app:layout_constraintTop_toBottomOf="@+id/teSearch"
             app:layout_constraintVertical_chainStyle="packed"
             tools:listitem="@layout/recyclerview_istasyon" />
 
+        <ProgressBar
+            android:id="@+id/loaderBar"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/revIstasyonlar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/revIstasyonlar" />
 
         <TextView
             android:id="@+id/tvUGS"
@@ -134,7 +146,7 @@
 
 
         <EditText
-            android:id="@+id/edtName"
+            android:id="@+id/teSearch"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -153,7 +165,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:text="Dünya"
+            android:text="@string/mevcit_istasyon"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/revIstasyonlar" />

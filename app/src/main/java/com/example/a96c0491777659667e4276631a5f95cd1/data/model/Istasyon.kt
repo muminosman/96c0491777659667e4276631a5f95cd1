@@ -4,10 +4,12 @@ data class Istasyon(
     val capacity: Int,
     var coordinateX: Double,
     var coordinateY: Double,
+
     val name: String,
 
     var need: Int,
     var stock: Int,
     var is_favori: Boolean = false,
-    var is_traveled: Boolean = true
+    var is_traveled: Boolean = false,
+    var eus: Int
 )
